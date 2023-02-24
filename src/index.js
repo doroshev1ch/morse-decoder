@@ -44,7 +44,7 @@ function decode(expr) {
         for (let i = 0; i < arr.length; i++){
             if (arr[i].includes(value)) {
                 result[i] = key;
-            } else {
+            } else if (arr[i] === ' '){
                 result[i] = arr[i]
             }
         }
