@@ -44,6 +44,8 @@ function decode(expr) {
         for (let i = 0; i < arr.length; i++){
             if (arr[i].includes(value)) {
                 result[i] = key;
+            } else {
+                result[i] = arr[i]
             }
         }
     }
@@ -52,13 +54,14 @@ function decode(expr) {
     let decoder;
     for (let j = 0; j < morse.length; j++){
         if (morse[j] === '.'){
-            morse[j] = '10';
-            decoder += morse[j] 
+            morse[j] = '10'; 
             // console.log(decoder)
         } else if (morse[j] === '-'){
-            morse[j] = '11';
-            decoder += morse[j] 
+            morse[j] = '11'; 
+        } else if (morse[j] === ' '){
+            morse[j] = '**********'; 
         }
+        decoder += morse[j]
     }
     return decoder.replace('undefined', '')
 
