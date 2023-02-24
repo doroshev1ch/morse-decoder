@@ -49,22 +49,25 @@ function decode(expr) {
             }
         }
     }
-    let morse = result.join('');
-    morse = morse.split('')
+    let morse = result;
+    // morse = morse.split('')
+    console.log(morse)
     let decoder;
     for (let j = 0; j < morse.length; j++){
-        if (morse[j] === '.'){
-            morse[j] = '10'; 
+        if (morse[j].includes('.')){
+            morse[j] = '10';
             // console.log(decoder)
-        } else if (morse[j] === '-'){
-            morse[j] = '11'; 
-        } else if (morse[j] === ' '){
+        } else if (morse[j].includes('-')){
+            morse[j] = '11';
+        }else if (morse[j].includes(' ')){
             morse[j] = '**********'; 
+        }
+        if (morse[j].length < 10){
+            morse[j] = morse[j].padStart(10, '0');
         }
         decoder += morse[j]
     }
     return decoder.replace('undefined', '')
-
 }
 
 module.exports = {
